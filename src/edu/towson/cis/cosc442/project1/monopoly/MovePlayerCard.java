@@ -28,10 +28,16 @@ public class MovePlayerCard extends Card {
         GameMaster.instance().movePlayer(currentPlayer, diceValue);
     }
 
+    /** 
+     * @return int of card type
+     */
     public int getCardType() {
         return type;
     }
 
+    /** 
+     * @return String label
+     */
     public String getLabel() {
         return "Go to " + destination;
     }

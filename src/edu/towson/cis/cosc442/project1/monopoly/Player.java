@@ -28,6 +28,7 @@ public class Player {
     /** 
 	 * @param property
 	 * @param amount
+	 * @implNote checks railroad and utility color to see if the property is buyable and subtracks money
 	 */
 	public void buyProperty(Cell property, int amount) {
         property.setTheOwner(this);
@@ -54,7 +55,7 @@ public class Player {
     }
 	
 	/** 
-	 * @return boolean
+	 * @return boolean is can buy house
 	 */
 	public boolean canBuyHouse() {
 		return (getMonopolies().length != 0);
@@ -62,7 +63,7 @@ public class Player {
 
 	/** 
 	 * @param property
-	 * @return boolean
+	 * @return boolean 
 	 */
 	public boolean checkProperty(String property) {
 		for(int i=0;i<properties.size();i++) {
@@ -77,6 +78,7 @@ public class Player {
 	
 	/** 
 	 * @param player
+	 * @implNote allows players to exchange properties if its available
 	 */
 	public void exchangeProperty(Player player) {
 		for(int i = 0; i < getPropertyNumber(); i++ ) {
@@ -97,7 +99,7 @@ public class Player {
 	}
     
     /** 
-	 * @return Cell[]
+	 * @return Cell[] of properties
 	 */
 	public Cell[] getAllProperties() {
         ArrayList<Cell> list = new ArrayList<Cell>();
@@ -108,14 +110,14 @@ public class Player {
     }
 
 	/** 
-	 * @return int
+	 * @return int money
 	 */
 	public int getMoney() {
 		return this.money;
 	}
 	
 	/** 
-	 * @return String[]
+	 * @return String[] of monopolies owned using color
 	 */
 	public String[] getMonopolies() {
 		ArrayList<String> monopolies = new ArrayList<String>();
@@ -142,7 +144,7 @@ public class Player {
 	}
 
 	/** 
-	 * @return String
+	 * @return String name
 	 */
 	public String getName() {
 		return name;
@@ -159,7 +161,7 @@ public class Player {
 	}
 
 	/** 
-	 * @return Cell
+	 * @return Cell position
 	 */
 	public Cell getPosition() {
 		return this.position;
@@ -174,7 +176,7 @@ public class Player {
 	}
 	
 	/** 
-	 * @return int
+	 * @return int property number
 	 */
 	public int getPropertyNumber() {
 		return properties.size();
@@ -182,7 +184,7 @@ public class Player {
 
 	/** 
 	 * @param name
-	 * @return int
+	 * @return int value of color
 	 */
 	private int getPropertyNumberForColor(String name) {
 		Integer number = (Integer)colorGroups.get(name);
@@ -193,14 +195,14 @@ public class Player {
 	}
 
 	/** 
-	 * @return boolean
+	 * @return boolean is bankrupt
 	 */
 	public boolean isBankrupt() {
 		return money <= 0;
 	}
 
 	/** 
-	 * @return boolean
+	 * @return boolean is in jail
 	 */
 	public boolean isInJail() {
 		return inJail;
@@ -214,7 +216,7 @@ public class Player {
 	}
 
 	/** 
-	 * @return int
+	 * @return int number of util
 	 */
 	public int numberOfUtil() {
 		return getPropertyNumberForColor(UtilityCell.COLOR_GROUP);
